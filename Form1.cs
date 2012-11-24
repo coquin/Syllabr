@@ -16,5 +16,10 @@ namespace Syllabr
         {
             InitializeComponent();
         }
+
+        private void clipboardMonitor1_ClipboardChanged(object sender, ClipboardChangedEventArgs e)
+        {
+            clipboardLabel.Text = (string)e.DataObject.GetData(DataFormats.Text);
+        }
     }
 }
