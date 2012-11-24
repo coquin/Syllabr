@@ -35,16 +35,18 @@
             // clipboardLabel
             // 
             this.clipboardLabel.AutoSize = true;
+            this.clipboardLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clipboardLabel.Location = new System.Drawing.Point(24, 28);
             this.clipboardLabel.Name = "clipboardLabel";
-            this.clipboardLabel.Size = new System.Drawing.Size(35, 13);
+            this.clipboardLabel.Size = new System.Drawing.Size(187, 26);
             this.clipboardLabel.TabIndex = 0;
-            this.clipboardLabel.Text = "label1";
+            this.clipboardLabel.Text = "No text captured";
+            this.clipboardLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // clipboardMonitor1
             // 
             this.clipboardMonitor1.BackColor = System.Drawing.Color.Red;
-            this.clipboardMonitor1.Location = new System.Drawing.Point(163, 52);
+            this.clipboardMonitor1.Location = new System.Drawing.Point(27, 63);
             this.clipboardMonitor1.Name = "clipboardMonitor1";
             this.clipboardMonitor1.Size = new System.Drawing.Size(75, 23);
             this.clipboardMonitor1.TabIndex = 1;
@@ -56,11 +58,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(235, 97);
             this.Controls.Add(this.clipboardMonitor1);
             this.Controls.Add(this.clipboardLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Syllabr";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
