@@ -15,11 +15,24 @@ namespace Syllabr
         public Form1()
         {
             InitializeComponent();
+            setLabelText(Clipboard.GetText());
+        }
+
+        private void setLabelText(string txt="")
+        {
+            if (txt != null && txt.Length > 0)
+            {
+                clipboardLabel.Text = txt;
+            }
+            else
+            {
+                clipboardLabel.Text = "No text captured";
+            }
         }
 
         private void clipboardMonitor1_ClipboardChanged(object sender, ClipboardChangedEventArgs e)
         {
-            clipboardLabel.Text = (string)e.DataObject.GetData(DataFormats.Text);
+            setLabelText((string)e.DataObject.GetData(DataFormats.Text));
         }
     }
 }
