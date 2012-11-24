@@ -21,22 +21,34 @@ namespace Syllabr
 
         private void setLabelText(string txt="")
         {
-            if (txt != null && txt.Length > 0)
-            {
-                string lng = detectLanguage(txt);
+            string lng;
+            int count;
 
-                if (lng == "RUS")
+            try
+            {
+                if (txt.Length > 0)
                 {
-                    clipboardLabel.Text = countRus(txt).ToString();
+                    lng = detectLanguage(txt);
+
+                    if (lng == "RUS")
+                    {
+                        count = countRus(txt);
+                    }
+                    else
+                    {
+                        count = countEng(txt);
+                    }
+
+                    clipboardLabel.Text = lng + ": " + count.ToString();
                 }
                 else
                 {
-                    clipboardLabel.Text = countEng(txt).ToString();
+                    clipboardLabel.Text = "No text captured!";
                 }
             }
-            else
+            catch (Exception)
             {
-                clipboardLabel.Text = "No text captured";
+                clipboardLabel.Text = "No text captured!";
             }
         }
 
@@ -85,7 +97,14 @@ namespace Syllabr
 
         private void clipboardMonitor1_ClipboardChanged(object sender, ClipboardChangedEventArgs e)
         {
-            setLabelText((string)e.DataObject.GetData(DataFormats.UnicodeText));
+            if (e.DataObject.GetDataPresent(DataFormats.UnicodeText))
+            {
+                setLabelText((string)e.DataObject.GetData(DataFormats.UnicodeText));
+            }
+            else
+            {
+                clipboardLabel.Text = "No text captured!";
+            }
         }
     }
 }
