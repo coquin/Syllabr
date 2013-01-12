@@ -12,34 +12,42 @@ namespace Syllabr
 {
     public partial class MainForm : Form
     {
+        private IStringCounter counter;
         private SyllableCounter syllableCounter = new SyllableCounter();
+        private SymbolCounter symbolCounter = new SymbolCounter();
+        private string text = "";
+
+        private const string noTextMessage = "No text captured!";
 
         public MainForm()
         {
+            counter = syllableCounter;
+
             InitializeComponent();
-            setLabelText(Clipboard.GetText(TextDataFormat.UnicodeText));
+            text = Clipboard.GetText(TextDataFormat.UnicodeText);
+            setLabelText();
         }
 
-        private void setLabelText(string txt="")
+        private void setLabelText()
         {
             int count;
 
             try
             {
-                if (txt.Length > 0)
+                if (text.Length > 0)
                 {
-                    count = syllableCounter.count(txt);
+                    count = counter.count(text);
 
-                    clipboardLabel.Text = syllableCounter.language + ": " + count.ToString();
+                    clipboardLabel.Text = counter.language + ": " + count.ToString();
                 }
                 else
                 {
-                    clipboardLabel.Text = "No text captured!";
+                    clipboardLabel.Text = noTextMessage;
                 }
             }
             catch (Exception)
             {
-                clipboardLabel.Text = "No text captured!";
+                clipboardLabel.Text = noTextMessage;
             }
         }
 
@@ -47,12 +55,28 @@ namespace Syllabr
         {
             if (e.DataObject.GetDataPresent(DataFormats.UnicodeText))
             {
-                setLabelText((string)e.DataObject.GetData(DataFormats.UnicodeText));
+                text = (string)e.DataObject.GetData(DataFormats.UnicodeText);
+                setLabelText();
             }
             else
             {
-                clipboardLabel.Text = "No text captured!";
+                text = "";
+                clipboardLabel.Text = noTextMessage;
             }
+        }
+
+        private void countSyllabcesButton_Click(object sender, EventArgs e)
+        {
+            countSymbolsButton.Checked = false;
+            counter = syllableCounter;
+            setLabelText();
+        }
+
+        private void countSymbolsButton_Click(object sender, EventArgs e)
+        {
+            countSyllabcesButton.Checked = false;
+            counter = symbolCounter;
+            setLabelText();
         }
     }
 }
