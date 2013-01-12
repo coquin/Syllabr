@@ -17,7 +17,7 @@ namespace Syllabr
         private SymbolCounter symbolCounter = new SymbolCounter();
         private string text = "";
 
-        private const string noTextMessage = "No text captured!";
+        private const string noTextMessage = "No text";
 
         public MainForm()
         {
