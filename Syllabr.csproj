@@ -65,6 +65,7 @@
     <Compile Include="ClipboardMonitor.Designer.cs">
       <DependentUpon>ClipboardMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="LanguageDetector.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
