@@ -9,7 +9,7 @@ namespace Syllabr
 {
     class SyllableCounterENG : ISyllableCounter
     {
-        public int count(string text)
+        public int countSyllables(string text)
         {
             Regex replaceRgx = new Regex(@"\by", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             Regex syllabesRgx = new Regex(@"cion|tion|sion|eau|iou|ae|ai|ay|au|ee|ea|ei|eu|ey|ie|oa|oe|oi|oo|ou|oy|ue|ui|[aueioy]", RegexOptions.Compiled | RegexOptions.IgnoreCase);

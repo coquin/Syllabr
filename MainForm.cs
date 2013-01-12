@@ -12,38 +12,25 @@ namespace Syllabr
 {
     public partial class MainForm : Form
     {
+        private SyllableCounter syllableCounter = new SyllableCounter();
+
         public MainForm()
         {
             InitializeComponent();
             setLabelText(Clipboard.GetText(TextDataFormat.UnicodeText));
         }
 
-        private SyllableCounterRUS counterRUS = new SyllableCounterRUS();
-        private SyllableCounterENG counterENG = new SyllableCounterENG();
-        private ISyllableCounter counter;
-
-        private LanguageDetector languageDetector = new LanguageDetector();
-
         private void setLabelText(string txt="")
         {
-            string lng;
+            int count;
 
             try
             {
                 if (txt.Length > 0)
                 {
-                    lng = languageDetector.detectLanguage(txt);
+                    count = syllableCounter.count(txt);
 
-                    if (lng == LanguageDetector.RUS)
-                    {
-                        counter = counterRUS;
-                    }
-                    else
-                    {
-                        counter = counterENG;
-                    }
-
-                    clipboardLabel.Text = lng + ": " + counter.count(txt).ToString();
+                    clipboardLabel.Text = syllableCounter.language + ": " + count.ToString();
                 }
                 else
                 {

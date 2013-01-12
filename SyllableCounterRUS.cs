@@ -9,7 +9,7 @@ namespace Syllabr
 {
     class SyllableCounterRUS : ISyllableCounter
     {
-        public int count(string text)
+        public int countSyllables(string text)
         {
             Regex rgx = new Regex(@"[аеёиоуыэюя]", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             MatchCollection matches = rgx.Matches(text);
