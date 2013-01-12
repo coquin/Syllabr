@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Syllabr
 {
     // Класс SyllableCounter
-    // Реализует функционал подсчёта слогов в переданной строке текста,
-    // автоматически определяя язык
+    // Реализует функционал подсчёта слогов в переданной строке текста
     class SyllableCounter : StringCounter
     {
         private SyllableCounterRUS counterRUS = new SyllableCounterRUS();
