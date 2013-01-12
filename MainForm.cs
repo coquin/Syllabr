@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Syllabr
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             setLabelText(Clipboard.GetText(TextDataFormat.UnicodeText));
