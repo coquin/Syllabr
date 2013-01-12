@@ -9,29 +9,15 @@ namespace Syllabr
     // Класс SyllableCounter
     // Реализует функционал подсчёта слогов в переданной строке текста,
     // автоматически определяя язык
-    class SyllableCounter : IStringCounter
+    class SyllableCounter : StringCounter
     {
         private SyllableCounterRUS counterRUS = new SyllableCounterRUS();
         private SyllableCounterENG counterENG = new SyllableCounterENG();
         private ISyllableCounter counter;
 
-        private LanguageDetector languageDetector = new LanguageDetector();
-
-        private string _language;
-
-        public string language
+        public override int count(string text)
         {
-            get
-            {
-                return _language;
-            }
-        }
-
-        public int count(string text)
-        {
-            _language = languageDetector.detectLanguage(text);
-
-            if (_language == LanguageDetector.RUS)
+            if (detectLanguage(text) == LanguageDetector.RUS)
             {
                 counter = counterRUS;
             }
