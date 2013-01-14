@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Syllabr
@@ -12,7 +13,9 @@ namespace Syllabr
     {
         public override int count(string text)
         {
+            Regex rgx = new Regex(@"\r\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             detectLanguage(text);
+            text = rgx.Replace(text, "");
 
             return text.Length;
         }
