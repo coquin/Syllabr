@@ -9,6 +9,6 @@ namespace Syllabr
     interface ISyllableCounter
     {
         // Считает число слогов в строке
-        int countSyllables(string text);
+        int CountSyllables(string Text);
     }
 }

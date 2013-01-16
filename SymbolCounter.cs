@@ -11,13 +11,14 @@ namespace Syllabr
     // Реализует функционал подсчёта символов в переданной строке текста
     class SymbolCounter : StringCounter
     {
-        public override int count(string text)
+        public override int Count(string Text)
         {
             Regex rgx = new Regex(@"\r\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            detectLanguage(text);
-            text = rgx.Replace(text, "");
+            Text = rgx.Replace(Text, "");
 
-            return text.Length;
+            _value = Text.Length;
+
+            return Value;
         }
     }
 }

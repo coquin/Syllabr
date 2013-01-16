@@ -10,24 +10,21 @@ namespace Syllabr
     // Реализует функционал подсчёта данных в заданной строке
     abstract class StringCounter : IStringCounter
     {
-        private LanguageDetector languageDetector = new LanguageDetector();
+        protected int _value = 0;
 
-        protected string detectLanguage(string text)
+        abstract public int Count(string Text);
+
+        public override string ToString()
         {
-            _language = languageDetector.detectLanguage(text);
-            return _language;
+            return Value.ToString();
         }
 
-        protected string _language;
-
-        public string language
+        public int Value
         {
             get
             {
-                return _language;
+                return _value;
             }
         }
-
-        abstract public int count(string text);
     }
 }

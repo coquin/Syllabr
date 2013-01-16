@@ -11,10 +11,13 @@ namespace Syllabr
     interface IStringCounter
     {
         // Основная функция
-        int count(string text);
+        int Count(string Text);
 
-        // Язык последней переданной строки
-        string language
+        // Преобразовывает value в строку
+        string ToString();
+
+        // Хранит последний результат работы метода count
+        int Value
         {
             get;
         }

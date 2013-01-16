@@ -14,9 +14,18 @@ namespace Syllabr
         private SyllableCounterENG counterENG = new SyllableCounterENG();
         private ISyllableCounter counter;
 
-        public override int count(string text)
+        private LanguageDetector languageDetector = new LanguageDetector();
+        private string _language;
+
+        private string detectLanguage(string text)
         {
-            if (detectLanguage(text) == LanguageDetector.RUS)
+            _language = languageDetector.detectLanguage(text);
+            return _language;
+        }
+
+        public override int Count(string Text)
+        {
+            if (detectLanguage(Text) == LanguageDetector.RUS)
             {
                 counter = counterRUS;
             }
@@ -25,7 +34,13 @@ namespace Syllabr
                 counter = counterENG;
             }
 
-            return counter.countSyllables(text);
+            _value = counter.CountSyllables(Text);
+            return Value;
+        }
+
+        public override string ToString()
+        {
+            return _language + ": " + Value.ToString();
         }
     }
 }

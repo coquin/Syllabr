@@ -30,15 +30,13 @@ namespace Syllabr
 
         private void setLabelText()
         {
-            int count;
-
             try
             {
                 if (text.Length > 0)
                 {
-                    count = counter.count(text);
+                    counter.Count(text);
 
-                    clipboardLabel.Text = counter.language + ": " + count.ToString();
+                    clipboardLabel.Text = counter.ToString();
                 }
                 else
                 {
